@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\food_component;
+use App\Http\Controllers\foodMenuController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -33,3 +34,4 @@ Route::get("admin/{id}/delete",[food_component::class, 'destroy']);
 
 // food_delivery routs--->
 Route::get("/resturant",[food_component::class, 'resturant']); 
+Route::get("/food-menu",[foodMenuController::class, 'foodMenu']); 

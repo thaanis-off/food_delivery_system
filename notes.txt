@@ -3,6 +3,7 @@ composer create-project laravet/laravet crud-app
 php artisan make:controller ProductController
 php artisan make:model Product -m
 php artisan migrate:fresh
+php artisan optimize  
 
 //when you need to change somthing in a table
 php artisan migrate:refresh

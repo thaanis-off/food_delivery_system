@@ -118,5 +118,9 @@ class food_component extends Controller
         $resturants = resturant::all();
         return view('food_delivery.resturant', ['resturants'=> $resturants]);
     }
+
+    public function foodMenu(){
+        return view('food_delivery.food_menu');
+    }
     
 }
