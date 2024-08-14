@@ -6,3 +6,8 @@ php artisan migrate:fresh
 
 //when you need to change somthing in a table
 php artisan migrate:refresh
+
+
+git add .
+git commit -m "front end added and restuarent model added"
+git push remote master
