@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\resturant;
+use App\Models\Resturant;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class food_component extends Controller
+class ResturantController extends Controller
 {
     
     // user function 

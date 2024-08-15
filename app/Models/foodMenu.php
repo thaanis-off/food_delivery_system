@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Models\resturant;
+use App\Models\Resturant;
 
 class foodMenu extends Model
 {
@@ -14,6 +14,6 @@ class foodMenu extends Model
 
     public function resturants(): BelongsTo
     {
-        return $this->belongsTo(resturant::class);
+        return $this->belongsTo(Resturant::class);
     }
 }

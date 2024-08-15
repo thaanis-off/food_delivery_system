@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\foodMenu;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class resturant extends Model
+class Resturant extends Model
 {
     
     protected $table = 'resturants';
@@ -16,6 +16,6 @@ class resturant extends Model
 
     public function food_menus(): HasMany
     {
-        return $this->hasMany(foodMenu::class);
+        return $this->hasMany(FoodMenu::class);
     }
 }
