@@ -35,3 +35,5 @@ Route::get("admin/{id}/delete",[food_component::class, 'destroy']);
 // food_delivery routs--->
 Route::get("/resturant",[food_component::class, 'resturant']); 
 Route::get("/food-menu",[foodMenuController::class, 'foodMenu']); 
+
+Route::post("food_delivery/store",[foodMenuController::class, 'storeFoods']); 

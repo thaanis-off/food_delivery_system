@@ -11,4 +11,4 @@ php artisan migrate:refresh
 //git comments
 git add .
 git commit -m "front end added and restuarent model added"
-git push remote master
+git push origin master

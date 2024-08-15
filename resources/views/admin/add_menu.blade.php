@@ -1,7 +1,8 @@
   @extends('layouts.admin_layout')
   @section('main_content')
       <div class="col-md-8">
-          <form action="#" method="post">
+          <form action="/admin/store" method="POST" enctype="multipart/form-data">
+              @csrf
               <div class="row mb-3">
                   <div class="py-2">
                       <h4 class="fw-bolder">Add Menu</h4>
@@ -10,41 +11,59 @@
                       <label for="name" class="form-label">
                           Name
                       </label>
-                      <input type="text" name="name" id="name" class="form-control"
-                          placeholder="Enter Product Name">
+                      <input type="text" name="name" id="name"
+                          class="form-control @if ($errors->has('name')) {{ 'is-invalid' }} @endif"
+                          placeholder="Enter Product Name" value="{{ old('name') }}">
+                      @if ($errors->has('name'))
+                          <div class="invalid-feedback">{{ $errors->first('name') }} </div>
+                      @endif
                   </div>
 
                   <div class="col-md-6">
                       <label for="resturant" name="resturant" class="form-label">Resturant</label>
-                      <select class="form-select" aria-label="Default select example">
+                      <select class="form-select @if ($errors->has('resturant')) {{ 'is-invalid' }} @endif"
+                          aria-label="Default select example" required>
                           <option selected>Select the resturant</option>
                           @foreach ($resturants as $resturant)
-                              <option value="{{ $resturant->id }}">{{ $resturant->name }}</option>
+                              <option value="{{ $resturant->id }}"> {{ $resturant->name }}</option>
                           @endforeach
-
-
-
                       </select>
+                      @if ($errors->has('resturant'))
+                          <div class="invalid-feedback">{{ $errors->first('resturant') }} </div>
+                      @endif
                   </div>
               </div>
               <div class="row mb-3">
                   <div class="col-md-6">
                       <label for="mrp" class="form-label">M.R.P</label>
-                      <input type="number" name="mrp" id="mrp" class="form-control"
-                          placeholder="Enter M.R.P Price">
+                      <input type="number" name="mrp" id="mrp"
+                          class="form-control @if ($errors->has('mrp')) {{ 'is-invalid' }} @endif"
+                          placeholder="Enter M.R.P Price" value="{{ old('mrp') }}">
+                      @if ($errors->has('mrp'))
+                          <div class="invalid-feedback">{{ $errors->first('mrp') }} </div>
+                      @endif
                   </div>
                   <div class="col-md-6">
-                      <label for="price" class="form-label">Selling Price</label>
-                      <input type="number" name="price" id="price" class="form-control"
-                          placeholder="Enter the price">
+                      <label for="selling_price" class="form-label">Selling Price</label>
+                      <input type="number" name="selling_price" id="selling_price"
+                          class="form-control  @if ($errors->has('selling_price')) {{ 'is-invalid' }} @endif"
+                          placeholder="Enter the price" value="{{ old('selling_price') }}">
+                      @if ($errors->has('selling_price'))
+                          <div class="invalid-feedback">{{ $errors->first('selling_price') }} </div>
+                      @endif
                   </div>
               </div>
 
-              <div class="row mb-3">
+              <div class="row
+                          mb-3">
                   <div class="col-md-12">
                       <label for="description" class="form-label">Description</label>
-                      <textarea name="" id="description" style="resize: none; height: 150px;" ; class="form-control"
-                          placeholder="Enter Product Description"></textarea>
+                      <textarea name="description" id="description" style="resize: none; height: 150px;" ;
+                          class="form-control  @if ($errors->has('description')) {{ 'is-invalid' }} @endif"
+                          placeholder="Enter Product Description" {{ old('description') }}></textarea>
+                      @if ($errors->has('description'))
+                          <div class="invalid-feedback">{{ $errors->first('description') }} </div>
+                      @endif
                   </div>
               </div>
               <div class="form-check mb-3">
@@ -55,7 +74,7 @@
               </div>
               <div class="row mb-3">
                   <div class="col-md-12">
-                      <label for="name" class="form-label">
+                      <label for="image" class="form-label">
                           Product Image
                       </label>
                       <input type="file" name="image" id="image" class="form-control">
