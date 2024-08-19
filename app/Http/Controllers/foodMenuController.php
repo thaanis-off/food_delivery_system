@@ -52,4 +52,8 @@ public function allMenu(){
    $allFoods = FoodMenu::latest()->paginate(6);
    return view('admin.all_menu', ['allFoods'=> $allFoods]);
 }
+
+public function addCatgry(){
+    return view('admin.add_category');
+  }
 }

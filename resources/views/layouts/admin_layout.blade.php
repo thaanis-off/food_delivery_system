@@ -8,12 +8,12 @@
     <title>Bootstrap Admin Dashboard</title>
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{{asset('assets/css/admin_style.css')}}">
-   
+    <link rel="stylesheet" href="{{ asset('assets/css/admin_style.css') }}">
+
 </head>
 
 <body>
@@ -29,7 +29,7 @@
                         Admin Elements
                     </li>
                     <li class="sidebar-item">
-                        <a href="{{('admin')}}" class="sidebar-link">
+                        <a href="{{ 'admin' }}" class="sidebar-link">
                             <i class="fa-solid fa-list pe-2"></i>
                             Dashboard
                         </a>
@@ -42,8 +42,8 @@
                     </li>
 
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
-                            aria-expanded="false">
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#pages"
+                            data-bs-toggle="collapse" aria-expanded="false">
                             <i class="fa-solid fa-hotel pe-2"></i>
                             Resturants
                         </a>
@@ -57,8 +57,8 @@
                         </ul>
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#posts" data-bs-toggle="collapse"
-                            aria-expanded="false"><i class="fa-solid fa-utensils pe-2"></i>
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#posts"
+                            data-bs-toggle="collapse" aria-expanded="false"><i class="fa-solid fa-utensils pe-2"></i>
                             Menu
                         </a>
                         <ul id="posts" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
@@ -66,25 +66,28 @@
                                 <a href="all_menu" class="sidebar-link">All Menu</a>
                             </li>
                             <li class="sidebar-item">
+                                <a href="add_category" class="sidebar-link">Add Category </a>
+                            </li>
+                            <li class="sidebar-item">
                                 <a href="add_menu" class="sidebar-link">Add Menu</a>
                             </li>
-                          
+
                         </ul>
                     </li>
                     <li class="sidebar-item">
-                        <a href="users" class="sidebar-link"
-                            aria-expanded="false"><i class="fa-regular fa-user pe-2"></i>
+                        <a href="users" class="sidebar-link" aria-expanded="false"><i
+                                class="fa-regular fa-user pe-2"></i>
                             Users
                         </a>
-                        
+
                     </li>
-                    
+
                     <li class="sidebar-header">
                         Multi Level Menu
                     </li>
                     <li class="sidebar-item">
-                        <a href="#" class="sidebar-link collapsed" data-bs-target="#multi" data-bs-toggle="collapse"
-                            aria-expanded="false"><i class="bi bi-database-fill-gear"></i>
+                        <a href="#" class="sidebar-link collapsed" data-bs-target="#multi"
+                            data-bs-toggle="collapse" aria-expanded="false"><i class="bi bi-database-fill-gear"></i>
                             Maintanence
                         </a>
                         <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
@@ -113,9 +116,11 @@
                 <div class="navbar-collapse navbar">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">
-                            <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0 text-dark" style="margin-right: 10px;">
-                               <span  class="ml-4"> Mohamed Ibrahim</span>
-                                <img src="{{asset('assets/images/profile.jpg')}}" class="avatar img-fluid rounded" alt="">
+                            <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0 text-dark"
+                                style="margin-right: 10px;">
+                                <span class="ml-4"> Mohamed Ibrahim</span>
+                                <img src="{{ asset('assets/images/profile.jpg') }}" class="avatar img-fluid rounded"
+                                    alt="">
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
                                 <a href="#" class="dropdown-item">Profile</a>
@@ -127,36 +132,38 @@
                 </div>
             </nav>
 
-            
+
             <main class="content px-3 py-2">
                 <div class="container-fluid">
                     <div class="row">
-                    @if ($message=Session::get('success')) 
-                    <div class="col-12">           
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                     <i class="bi bi-check-circle-fill"></i>
-                             
-                             {{$message}}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    </div>  
-                    @endif 
-                     @yield('main_content')
+                        @if ($message = Session::get('success'))
+                            <div class="col-12">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <i class="bi bi-check-circle-fill"></i>
+
+                                    {{ $message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            </div>
+                        @endif
+                        @yield('main_content')
                     </div>
                 </div>
             </main>
 
-          <div class="toast-container position-fixed top-4 end-0 p-3">
-                        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                            <div class="toast-header">
-                                <img src="..." class="rounded me-2" alt="...">
-                                <strong class="me-auto">success</strong> {{$message}}
-                                <small>just now</small>
-                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                            </div>
-                            <div class="toast-body">Hello, world! This is a toast message.</div>
-                        </div>
+            <div class="toast-container position-fixed top-4 end-0 p-3">
+                <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <img src="..." class="rounded me-2" alt="...">
+                        <strong class="me-auto">success</strong> {{ $message }}
+                        <small>just now</small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast"
+                            aria-label="Close"></button>
                     </div>
+                    <div class="toast-body">Hello, world! This is a toast message.</div>
+                </div>
+            </div>
             <!-- footer start -->
             <footer class="footer">
                 <div class="container-fluid">
@@ -190,18 +197,18 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{asset('assets/js/script.js')}}"></script>
+    <script src="{{ asset('assets/js/script.js') }}"></script>
     <script>
         const toastTrigger = document.getElementById('liveToastBtn')
         const toastLiveExample = document.getElementById('liveToast')
-    
+
         if (toastTrigger) {
-          const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-          toastTrigger.addEventListener('click', () => {
-            toastBootstrap.show()
-          })
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+            toastTrigger.addEventListener('click', () => {
+                toastBootstrap.show()
+            })
         }
-      </script>
+    </script>
 </body>
 
 </html>

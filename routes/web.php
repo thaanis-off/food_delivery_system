@@ -21,6 +21,7 @@ Route::get("/add_menu",[ResturantController::class, 'addMenu']);
 Route::get("/users",[ResturantController::class, 'users']);  
 // food menu  
 Route::get("/all_menu",[FoodMenuController::class, 'allMenu']);  
+Route::get("/add_category",[FoodMenuController::class, 'addCatgry']);  
 
 
 
