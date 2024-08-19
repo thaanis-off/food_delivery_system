@@ -15,11 +15,12 @@ Route::get("/all_orders",[ResturantController::class, 'orders']);
 Route::get("/view_details",[ResturantController::class, 'viewDetails']);
 Route::get("/all_resturants",[ResturantController::class, 'allResturants']);
 Route::get("/update_resturant",[ResturantController::class, 'updateResturant']);    
-Route::get("/add_resturant",[ResturantController::class, 'addResturant']);    
-Route::get("/all_menu",[ResturantController::class, 'allMenu']);    
+Route::get("/add_resturant",[ResturantController::class, 'addResturant']);      
 Route::get("/edit_menu",[ResturantController::class, 'editMenu']);    
 Route::get("/add_menu",[ResturantController::class, 'addMenu']);    
-Route::get("/users",[ResturantController::class, 'users']);    
+Route::get("/users",[ResturantController::class, 'users']);  
+// food menu  
+Route::get("/all_menu",[FoodMenuController::class, 'allMenu']);  
 
 
 
@@ -34,6 +35,6 @@ Route::get("admin/{id}/delete",[ResturantController::class, 'destroy']);
 
 // food_delivery routs--->
 Route::get("/resturant",[ResturantController::class, 'resturant']); 
-Route::get("/food-menu",[FoodMenuController::class, 'foodMenu']); 
 
-Route::post("food_delivery/store",[FoodMenuController::class, 'storeFoods']); 
+
+Route::post("admin/storeFoods",[FoodMenuController::class, 'storeFoods']);  

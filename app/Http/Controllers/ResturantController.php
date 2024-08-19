@@ -73,9 +73,9 @@ class ResturantController extends Controller
         return back()->withSuccess('Resturant Deleted Successfull...');
     } 
 
-    public function allMenu(){
-        return view('admin.all_menu');
-    }
+    // public function allMenu(){
+    //     return view('admin.all_menu');
+    // }
     public function editmenu(){
         return view('admin.edit_menu');
     }

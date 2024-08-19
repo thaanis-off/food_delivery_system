@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label for="price" class="form-label">Status</label>
+                    <label for="status" class="form-label">Status</label>
                     <select class="form-select @if ($errors->has('status')) {{ 'is-invalid' }} @endif"
                         aria-label="Default select example" name="status" required>
                         <option selected disabled>Select the status</option>

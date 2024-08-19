@@ -1,7 +1,7 @@
   @extends('layouts.admin_layout')
   @section('main_content')
       <div class="col-md-8">
-          <form action="/admin/store" method="POST" enctype="multipart/form-data">
+          <form action="/admin/storeFoods" method="POST" enctype="multipart/form-data">
               @csrf
               <div class="row mb-3">
                   <div class="py-2">
@@ -20,12 +20,14 @@
                   </div>
 
                   <div class="col-md-6">
-                      <label for="resturant" name="resturant" class="form-label">Resturant</label>
+                      <label for="resturant" class="form-label">Resturant</label>
                       <select class="form-select @if ($errors->has('resturant')) {{ 'is-invalid' }} @endif"
-                          aria-label="Default select example" required>
-                          <option selected>Select the resturant</option>
+                          aria-label="Default select example" name="resturant" required>
+                          <option selected disabled>Select the resturant</option>
                           @foreach ($resturants as $resturant)
-                              <option value="{{ $resturant->id }}"> {{ $resturant->name }}</option>
+                              <option value="{{ $resturant->id }}" @if (old('resturant') == $resturant->id) selected @endif>
+                                  {{ $resturant->name }}
+                              </option>
                           @endforeach
                       </select>
                       @if ($errors->has('resturant'))
@@ -33,6 +35,7 @@
                       @endif
                   </div>
               </div>
+
               <div class="row mb-3">
                   <div class="col-md-6">
                       <label for="mrp" class="form-label">M.R.P</label>
@@ -60,24 +63,28 @@
                       <label for="description" class="form-label">Description</label>
                       <textarea name="description" id="description" style="resize: none; height: 150px;" ;
                           class="form-control  @if ($errors->has('description')) {{ 'is-invalid' }} @endif"
-                          placeholder="Enter Product Description" {{ old('description') }}></textarea>
+                          placeholder="Enter Product Description">{{ old('description') }}</textarea>
                       @if ($errors->has('description'))
                           <div class="invalid-feedback">{{ $errors->first('description') }} </div>
                       @endif
                   </div>
               </div>
               <div class="form-check mb-3">
-                  <input class="form-check-input" name="top_dishes" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">
+                  <input class="form-check-input" name="top_dishes" type="checkbox" value="1" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault" name="top_dishes">
                       Top Dishes
                   </label>
               </div>
               <div class="row mb-3">
                   <div class="col-md-12">
-                      <label for="image" class="form-label">
-                          Product Image
+                      <label for="image" name="image" class="form-label">
+                          Food Image
                       </label>
-                      <input type="file" name="image" id="image" class="form-control">
+                      <input type="file" name="image" id="image"
+                          class="form-control @if ($errors->has('image')) {{ 'is-invalid' }} @endif">
+                      @if ($errors->has('image'))
+                          <div class="invalid-feedback">{{ $errors->first('image') }} </div>
+                      @endif
                   </div>
               </div>
               <div class="mb-3">
