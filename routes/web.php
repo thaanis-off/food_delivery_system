@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ResturantController;
 use App\Http\Controllers\FoodMenuController;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,7 @@ Route::get("/add_menu",[ResturantController::class, 'addMenu']);
 Route::get("/users",[ResturantController::class, 'users']);  
 // food menu  
 Route::get("/all_menu",[FoodMenuController::class, 'allMenu']);  
-Route::get("/add_category",[FoodMenuController::class, 'addCatgry']);  
+Route::get("/add_category",[CategoryController::class, 'addCatgry']);  
 
 
 
@@ -39,3 +40,5 @@ Route::get("/resturant",[ResturantController::class, 'resturant']);
 
 
 Route::post("admin/storeFoods",[FoodMenuController::class, 'storeFoods']);  
+
+Route::post("admin/storeCategory",[CategoryController::class, 'storeCategory']);  

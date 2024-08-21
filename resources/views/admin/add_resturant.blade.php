@@ -86,6 +86,20 @@
                     @endif
                 </div>
             </div>
+            <hr>
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label for="resturant_banner_image" class="form-label">
+                        Resturant banner image
+                    </label>
+                    <input type="file" name="resturant_banner_image" id="resturant_banner_image"
+                        class="form-control  @if ($errors->has('resturant_banner_image')) {{ 'is-invalid' }} @endif">
+                    @if ($errors->has('resturant_banner_image'))
+                        <div class="invalid-feedback">{{ $errors->first('resturant_banner_image') }} </div>
+                    @endif
+                </div>
+            </div>
+
             <div class="mb-3">
                 <button type="submit" class="btn btn-dark">Save item</button>
                 <button type="submit" class="btn btn-danger">Reset</button>

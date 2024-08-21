@@ -49,6 +49,7 @@ class ResturantController extends Controller
             'status'=>'required',
             'description'=>'required|max:105',
             'image'=>'nullable|mimes:jpeg,webp,jpg,png,gif|max:10000',
+            'rest_banner_image'=>'nullable|mimes:jpeg,webp,jpg,png,gif|max:10000'
            ]);
            $resturants = resturant::where('id',$id)->first();
 
@@ -57,6 +58,8 @@ class ResturantController extends Controller
             $request->image->move(public_path('all_images'), $imageName);
             $resturants->image = $imageName;
            }
+
+          
 
            $resturants->name = $request->name;
            $resturants->opening_time = $request->opening_time;
@@ -96,14 +99,19 @@ class ResturantController extends Controller
         'status'=>'required',
         'description'=>'required|max:105',
         'image'=>'required|mimes:jpeg,webp,jpg,png,gif|max:10000',
+        'resturant_banner_image'=>'required|mimes:jpeg,webp,jpg,png,gif|max:10000'
        ]);
        
     $imageName=time().".".$request->image->extension();
     $request->image->move(public_path('all_images'), $imageName);
+
+    $bannerImage=time().".".$request->resturant_banner_image->extension();
+    $request->resturant_banner_image->move(public_path('all_images'), $bannerImage);
     
 
     $product = new resturant;
     $product->image = $imageName;
+    $product->resturant_banner_image = $bannerImage;
     $product->name = $request->name;
     $product->opening_time = $request->opening_time;
     $product->closing_time = $request->closing_time;

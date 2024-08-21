@@ -12,7 +12,14 @@ class Resturant extends Model
     
     protected $table = 'resturants';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'opening_time','closing_time','status','description','image',];
+    protected $fillable = [
+        'name',
+        'opening_time',
+        'closing_time',
+        'status',
+        'description',
+        'image',
+        'rest_banner_image'];
 
     public function food_menus(): HasMany
     {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\FoodMenu;
+use App\Models\Resturant;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -53,7 +54,5 @@ public function allMenu(){
    return view('admin.all_menu', ['allFoods'=> $allFoods]);
 }
 
-public function addCatgry(){
-    return view('admin.add_category');
-  }
+
 }
