@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="https://kit.fontawesome.com/ae360af17e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/admin_style.css') }}">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
 
 </head>
 
@@ -35,7 +38,7 @@
                         </a>
                     </li>
                     <li class="sidebar-item">
-                        <a href="all_orders" class="sidebar-link">
+                        <a href="{{ route('allOrdersView') }}" class="sidebar-link">
                             <i class="bi-cart-fill me-1"></i>
                             Orders
                         </a>
@@ -49,11 +52,12 @@
                         </a>
                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="all_resturants" class="sidebar-link">All Resturants</a>
+                                <a href="{{ route('allResturantsView') }}" class="sidebar-link">All Resturants</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="add_resturant" class="sidebar-link">Add Resturants</a>
+                                <a href="{{ route('addResturantsView') }}" class="sidebar-link">Add Resturants</a>
                             </li>
+
                         </ul>
                     </li>
                     <li class="sidebar-item">
@@ -63,13 +67,14 @@
                         </a>
                         <ul id="posts" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="all_menu" class="sidebar-link">All Menu</a>
+                                <a href="{{ route('allMenuView') }}" class="sidebar-link">All Food Item</a>
+                            </li>
+
+                            <li class="sidebar-item">
+                                <a href="{{ route('addMenuview') }}" class="sidebar-link">Add Food Item</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="add_category" class="sidebar-link">Add Category </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="add_menu" class="sidebar-link">Add Menu</a>
+                                <a href="{{ route('addCategoryView') }}" class="sidebar-link">Add Category </a>
                             </li>
 
                         </ul>
@@ -209,6 +214,7 @@
             })
         }
     </script>
+    @yield('scripts')
 </body>
 
 </html>

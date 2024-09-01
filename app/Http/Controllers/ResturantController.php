@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\foodMenu;
 use App\Models\Resturant;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -32,7 +34,7 @@ class ResturantController extends Controller
     public function updateResturant(){
         return view('admin.update_resturant');
     }
-    public function addResturant(){
+    public function addResturants(){
         return view('admin.add_resturant');
     }
     
@@ -48,15 +50,22 @@ class ResturantController extends Controller
             'closing_time'=>'required',
             'status'=>'required',
             'description'=>'required|max:105',
+            'title'=>'required|max:80',
             'image'=>'nullable|mimes:jpeg,webp,jpg,png,gif|max:10000',
             'rest_banner_image'=>'nullable|mimes:jpeg,webp,jpg,png,gif|max:10000'
            ]);
-           $resturants = resturant::where('id',$id)->first();
+           $resturants = Resturant::where('id',$id)->first();
 
            if (isset($request->image)) {
             $imageName=time().".".$request->image->extension();
             $request->image->move(public_path('all_images'), $imageName);
             $resturants->image = $imageName;
+           }
+
+           if (isset($request->rest_banner_image)) {
+            $RestimageName=time().".".$request->rest_banner_image->extension();
+            $request->rest_banner_image->move(public_path('all_images'), $RestimageName);
+            $resturants->rest_banner_image = $RestimageName;
            }
 
           
@@ -66,8 +75,9 @@ class ResturantController extends Controller
            $resturants->closing_time = $request->closing_time;
            $resturants->status = $request->status;
            $resturants->description=$request->description;
+           $resturants->title= $request-> title;
            $resturants->save();
-           return redirect('/all_resturants')->withSuccess('Resturant updated successfull...');
+           return redirect('/all-resturants')->withSuccess('Resturant updated successfull...');
     } 
     
     public function destroy($id){
@@ -76,28 +86,29 @@ class ResturantController extends Controller
         return back()->withSuccess('Resturant Deleted Successfull...');
     } 
 
-    // public function allMenu(){
-    //     return view('admin.all_menu');
-    // }
+  
     public function editmenu(){
         return view('admin.edit_menu');
     }
     public function addmenu(){
         $resturants = resturant::all();
+        $categories = Category::all();
         return view('admin.add_menu')->with('resturants', $resturants);
+       
     }
     public function users(){
         return view('admin.users');
     }
 
     public function store(Request $request){
-        //dd($request->opening_time);
-       $request->validate([
+        //dd($request->resturant_banner_image,$request->image);
+        $request->validate([
         'name'=>'required',
         'opening_time'=>'required',
         'closing_time'=>'required',
         'status'=>'required',
         'description'=>'required|max:105',
+        'title'=>'required|max:200',
         'image'=>'required|mimes:jpeg,webp,jpg,png,gif|max:10000',
         'resturant_banner_image'=>'required|mimes:jpeg,webp,jpg,png,gif|max:10000'
        ]);
@@ -105,26 +116,34 @@ class ResturantController extends Controller
     $imageName=time().".".$request->image->extension();
     $request->image->move(public_path('all_images'), $imageName);
 
-    $bannerImage=time().".".$request->resturant_banner_image->extension();
-    $request->resturant_banner_image->move(public_path('all_images'), $bannerImage);
+    $RestimageName=time().".".$request->resturant_banner_image->extension();
+    $request->resturant_banner_image->move(public_path('all_images'), $RestimageName);
     
 
     $product = new resturant;
     $product->image = $imageName;
-    $product->resturant_banner_image = $bannerImage;
+    $product->resturant_banner_image = $RestimageName;
     $product->name = $request->name;
     $product->opening_time = $request->opening_time;
     $product->closing_time = $request->closing_time;
     $product->status = $request->status;
     $product->description=$request->description;
+    $product->title=$request->title;
     $product->save();
     return back()->withSuccess('Resturant added successfull...');
     }
 
      // food_delivery function
-     public function resturant(){
-        $resturants = resturant::all();
-        return view('food_delivery.resturant', ['resturants'=> $resturants]);
+    public function Resturants(){
+        $resturants = Resturant::all();
+        return view('food_delivery.resturants', ['resturants'=> $resturants]);
+    }
+
+    public function resturantShow(string $id): View
+    {   
+        return view('food_delivery.resturantShow', [
+            'resturant' => Resturant::findOrFail($id)
+        ]);
     }
 
     

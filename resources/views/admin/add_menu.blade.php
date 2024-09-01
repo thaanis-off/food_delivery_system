@@ -34,6 +34,26 @@
                           <div class="invalid-feedback">{{ $errors->first('resturant') }} </div>
                       @endif
                   </div>
+
+                  <div class="col-md-6 mt-3">
+                      <label for="category" class="form-label">Category</label>
+                      <select class="form-select @if ($errors->has('category')) {{ 'is-invalid' }} @endif"
+                          aria-label="Default select example" name="category" required>
+                          <option selected disabled>Select the category</option>
+                          @if (old('category'))
+                              {{ $category = App\Models\Category::find(old('category')) }}
+
+                              <option value="{{ old('category') }}" selected>{{ $category->name }}</option>
+                          @elseif(isset($resturant->category))
+                              <option value="{{ $resturant->category }}" selected>
+                                  {{ App\Models\Category::find($resturant->category)->name }}</option>
+                          @endif
+                      </select>
+                      @if ($errors->has('category'))
+                          <div class="invalid-feedback">{{ $errors->first('category') }} </div>
+                      @endif
+                  </div>
+
               </div>
 
               <div class="row mb-3">
@@ -57,8 +77,7 @@
                   </div>
               </div>
 
-              <div class="row
-                          mb-3">
+              <div class="row mb-3">
                   <div class="col-md-12">
                       <label for="description" class="form-label">Description</label>
                       <textarea name="description" id="description" style="resize: none; height: 150px;" ;
@@ -93,4 +112,30 @@
               </div>
           </form>
       </div>
+  @endsection
+
+  @section('scripts')
+      <script type="text/javascript">
+          jQuery('select[name="resturant"]').on('change', function() {
+              var resturantID = jQuery(this).val();
+              if (resturantID) {
+                  jQuery.ajax({
+                      url: "{{ url('admin/getCategoriesList') }}?resturant_id=" + resturantID,
+                      type: "GET",
+                      dataType: "json",
+                      success: function(data) {
+                          jQuery('select[name="category"]').empty();
+                          $('select[name="category"]').append(
+                              '<option selected disabled>Select...</option>');
+                          jQuery.each(data, function(key, value) {
+                              $('select[name="category"]').append('<option value="' + key + '">' +
+                                  value + '</option>');
+                          });
+                      }
+                  });
+              } else {
+                  $('select[name="category"]').empty();
+              }
+          });
+      </script>
   @endsection

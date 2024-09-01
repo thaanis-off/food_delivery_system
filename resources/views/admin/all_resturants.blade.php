@@ -3,7 +3,8 @@
      <div class="col-12">
          <div class="d-flex justify-content-between py-2">
              <h5 class="text-dark fw-bold"> All Resturants</h5>
-             <a href="add_resturant" class="btn btn-success btn-xl" style="margin-right: em;"><i class="bi bi-plus-circle"></i>
+             <a href="{{ route('addResturantsView') }}"class="btn btn-success btn-xl" style="margin-right: em;"><i
+                     class="bi bi-plus-circle"></i>
                  Add New
              </a>
          </div>
@@ -14,6 +15,7 @@
                  <tr>
                      <th scope="col">ID</th>
                      <th scope="col">Resturant</th>
+                     <th scope="col">Banner Img</th>
                      <th scope="col">Name</th>
                      <th scope="col">Description</th>
                      <th scope="col">Opening time</th>
@@ -31,6 +33,8 @@
                      <tr>
                          <td>{{ $index }}</td>
                          <td><img class="mmm" src="all_images/{{ $rest->image }}" alt="Greek salad"></td>
+                         <td><img class="mmm" src="all_images/{{ $rest->resturant_banner_image }}" alt="Greek salad">
+                         </td>
                          <td>{{ $rest->name }}</td>
                          <td><span>{{ $rest->description }}</span></td>
 

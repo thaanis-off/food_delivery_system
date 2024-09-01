@@ -19,10 +19,15 @@ class Resturant extends Model
         'status',
         'description',
         'image',
-        'rest_banner_image'];
+        'rest_banner_image'
+        ];
 
     public function food_menus(): HasMany
     {
         return $this->hasMany(FoodMenu::class);
+    }
+    public function categories(): HasMany
+    {
+        return $this->hasMany(Category::class);
     }
 }

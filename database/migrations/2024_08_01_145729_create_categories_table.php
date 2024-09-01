@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('resturants_id');
-            $table->text('title');
+            $table->unsignedBigInteger('resturant_id');
             $table->string('image');
-            $table->foreign('resturants_id')->references('id')->on('resturants');
+            $table->foreign('resturant_id')->references('id')->on('resturants');
             $table->timestamps();
         });
     }

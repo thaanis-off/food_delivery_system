@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Resturant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -19,7 +20,6 @@ class CategoryController extends Controller
         $request->validate([
         'name'=>'required',
         'resturant'=>'required',
-        'title'=>'required|max:80',
         'image'=>'required|mimes:jpeg,webp,jpg,png,gif|max:10000'
        ]);
 
@@ -29,9 +29,15 @@ class CategoryController extends Controller
         $category = new Category;
         $category->image = $catImage;
         $category->name = $request->name;
-        $category->resturants_id = $request->resturant;
-        $category->title = $request->title;
+        $category->resturant_id = $request->resturant;
         $category->save();
         return back()->withSuccess('Category added successfull...');
-}
+    }
+    public function getCategoriesList(Request $request){
+
+        //dd('reached');
+        $categories = DB::table("categories")->where("resturant_id",$request->resturant_id)->pluck("name","id");
+
+        return json_encode($categories);
+    }
 }

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->time('closing_time', precision:0);    
             $table->boolean('status');
             $table->text('description');
+            $table->text('title');
             $table->string('image');
             $table->string('resturant_banner_image');
             $table->timestamps();

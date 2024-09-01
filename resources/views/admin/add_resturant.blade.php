@@ -76,6 +76,18 @@
 
             <div class="row mb-3">
                 <div class="col-md-12">
+                    <label for="title" class="form-label">Title</label>
+                    <textarea name="title" id="title" style="resize: none; height: 150px;" ;
+                        class="form-control  @if ($errors->has('title')) {{ 'is-invalid' }} @endif"
+                        placeholder="Enter resturant title">{{ old('title') }}</textarea>
+                    @if ($errors->has('title'))
+                        <div class="invalid-feedback">{{ $errors->first('title') }} </div>
+                    @endif
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-12">
                     <label for="name" class="form-label">
                         Resturant Image
                     </label>
@@ -86,7 +98,8 @@
                     @endif
                 </div>
             </div>
-            <hr>
+
+
             <div class="row mb-3">
                 <div class="col-md-12">
                     <label for="resturant_banner_image" class="form-label">

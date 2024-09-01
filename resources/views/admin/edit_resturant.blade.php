@@ -77,6 +77,18 @@
 
             <div class="row mb-3">
                 <div class="col-md-12">
+                    <label for="title" class="form-label">Title</label>
+                    <textarea name="title" id="title" style="resize: none; height: 150px;" ;
+                        class="form-control  @if ($errors->has('title')) {{ 'is-invalid' }} @endif"
+                        placeholder="Enter resturant title">{{ old('title', $resturants->title) }}</textarea>
+                    @if ($errors->has('title'))
+                        <div class="invalid-feedback">{{ $errors->first('title') }} </div>
+                    @endif
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-12">
                     <label for="name" class="form-label">
                         Resturant Image
                     </label>
@@ -87,6 +99,20 @@
                     @endif
                 </div>
             </div>
+
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label for="resturant_banner_image" class="form-label">
+                        Resturant banner image
+                    </label>
+                    <input type="file" name="resturant_banner_image" id="resturant_banner_image"
+                        class="form-control  @if ($errors->has('resturant_banner_image')) {{ 'is-invalid' }} @endif">
+                    @if ($errors->has('resturant_banner_image'))
+                        <div class="invalid-feedback">{{ $errors->first('resturant_banner_image') }} </div>
+                    @endif
+                </div>
+            </div>
+
             <div class="mb-3">
                 <button type="submit" class="btn btn-dark">Update item</button>
                 <button type="submit" class="btn btn-danger">Reset</button>
