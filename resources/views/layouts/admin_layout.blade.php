@@ -52,11 +52,12 @@
                         </a>
                         <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                             <li class="sidebar-item">
-                                <a href="{{ route('allResturantsView') }}" class="sidebar-link">All Resturants</a>
-                            </li>
-                            <li class="sidebar-item">
                                 <a href="{{ route('addResturantsView') }}" class="sidebar-link">Add Resturants</a>
                             </li>
+                            <li class="sidebar-item">
+                                <a href="{{ route('allResturantsView') }}" class="sidebar-link">All Resturants</a>
+                            </li>
+
 
                         </ul>
                     </li>
@@ -66,15 +67,15 @@
                             Menu
                         </a>
                         <ul id="posts" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                            <li class="sidebar-item">
-                                <a href="{{ route('allMenuView') }}" class="sidebar-link">All Food Item</a>
-                            </li>
 
+                            <li class="sidebar-item">
+                                <a href="{{ route('addCategoryView') }}" class="sidebar-link">Add Category </a>
+                            </li>
                             <li class="sidebar-item">
                                 <a href="{{ route('addMenuview') }}" class="sidebar-link">Add Food Item</a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{ route('addCategoryView') }}" class="sidebar-link">Add Category </a>
+                                <a href="{{ route('allMenuView') }}" class="sidebar-link">All Food Item</a>
                             </li>
 
                         </ul>

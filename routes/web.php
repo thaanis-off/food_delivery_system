@@ -49,4 +49,6 @@ Route::put("admin/{id}/updateMenu",[FoodMenuController::class, 'updateMenu']);
 
 Route::post("admin/storeCategory",[CategoryController::class, 'storeCategory']);  
 
-Route::get("admin/getCategoriesList",[CategoryController::class, 'getCategoriesList']);  
+Route::get("admin/getCategoriesList",[CategoryController::class, 'getCategoriesList']); 
+
+Route::get("admin/getFoodmenus",[FoodMenuController::class, 'getFoodmenus']);  

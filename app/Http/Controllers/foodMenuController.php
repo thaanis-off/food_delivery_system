@@ -6,6 +6,7 @@ use App\Models\FoodMenu;
 use App\Models\Resturant;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\DB;
 
 
 class FoodMenuController extends Controller
@@ -104,5 +105,14 @@ public function updateMenu(Request $request ,$id){
     $food_menus->delete();
     return back()->withSuccess('Resturant Deleted Successfull...');
 } 
+
+
+public function getFoodmenus(Request $request){
+
+  //dd('reached');
+  $food_menus = DB::table("food_menus")->where("resturant_id",$request->resturant_id);
+
+  return json_encode($food_menus);
+}
 
 }

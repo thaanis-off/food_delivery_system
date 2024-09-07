@@ -81,7 +81,9 @@ class ResturantController extends Controller
     } 
     
     public function destroy($id){
-        $resturants = resturant::where('id',$id)->first();
+        $resturants = Resturant::where('id',$id)->first();
+        $resturants->food_menus()->delete();    
+        $resturants->categories()->delete();    
         $resturants->delete();
         return back()->withSuccess('Resturant Deleted Successfull...');
     } 
@@ -92,7 +94,7 @@ class ResturantController extends Controller
     }
     public function addmenu(){
         $resturants = resturant::all();
-        $categories = Category::all();
+      
         return view('admin.add_menu')->with('resturants', $resturants);
        
     }
@@ -142,7 +144,9 @@ class ResturantController extends Controller
     public function resturantShow(string $id): View
     {   
         return view('food_delivery.resturantShow', [
-            'resturant' => Resturant::findOrFail($id)
+            'resturant' => Resturant::findOrFail($id),
+            'categories' => Resturant::findOrFail($id)->categories,
+            'food_menus' => Resturant::findOrFail($id)->food_menus
         ]);
     }
 
