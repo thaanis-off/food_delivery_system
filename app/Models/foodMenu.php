@@ -18,8 +18,8 @@ class foodMenu extends Model
         return $this->belongsTo(Resturant::class);
     }
 
-    public function categories(): HasMany
+    public function categories(): BelongsTo
     {
-        return $this->hasMany(Category::class);
+        return $this->belongsTo(Category::class);
     }
 }

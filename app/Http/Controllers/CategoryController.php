@@ -24,7 +24,7 @@ class CategoryController extends Controller
        ]);
 
         $catImage=time().".".$request->image->extension();
-        $request->image->move(public_path('food_menu_images'), $catImage);
+        $request->image->move(public_path('category_images'), $catImage);
 
         $category = new Category;
         $category->image = $catImage;

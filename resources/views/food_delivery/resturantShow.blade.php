@@ -1,7 +1,7 @@
 @extends('layouts.index_layout')
 @section('main_content')
     <div class="col-md-10 my-4">
-        <img src="{{ asset('all_images/' . $resturant->resturant_banner_image) }}" alt="{{ $resturant->name }}"
+        <img src="{{ asset('resturant_bnr_images/' . $resturant->resturant_banner_image) }}" alt="{{ $resturant->name }}"
             class="img-menu">
         <div class="col-md-10 Oh4 textClr">
         </div>
@@ -17,7 +17,7 @@
         @foreach ($categories as $category)
             <div class="col-1 col-sm-1 category">
 
-                <img src="{{ asset('food_menu_images/' . $category->image) }}" alt="">
+                <img src="{{ asset('category_images/' . $category->image) }}" alt="">
                 <p>{{ $category->name }}</p>
 
             </div>
@@ -35,7 +35,7 @@
         <div class="col-3 mb-4" name="food_menu">
             <div class="card CardHome shadow">
                 <div class="card-body index-card-body">
-                    <img src="{{ asset('all_images/' . $food->image) }}" class="card-img-top index-card-img"
+                    <img src="{{ asset('food_menu_images/' . $food->image) }}" class="card-img-top index-card-img"
                         alt="Greek Salad" data-bs-toggle="modal" data-bs-target="#Modal1">
                     <button class="plus-button">
                         <i class="fas fa-plus"></i>

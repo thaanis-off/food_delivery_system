@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
@@ -17,9 +18,9 @@ class Category extends Model
         'image',
     ];
 
-    public function food_menus(): BelongsTo
+    public function food_menus(): HasMany
     {
-        return $this->belongsTo(FoodMenu::class);
+        return $this->HasMany(FoodMenu::class);
     }
     public function resturant(): BelongsTo
     {

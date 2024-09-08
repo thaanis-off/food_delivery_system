@@ -47,6 +47,8 @@ Route::get("admin/{id}/edit_menu",[FoodMenuController::class, 'editMenu']);
 
 Route::put("admin/{id}/updateMenu",[FoodMenuController::class, 'updateMenu']);
 
+Route::get("admin/{id}/deleteFood",[FoodMenuController::class, 'destroyFoodMenu']); 
+
 Route::post("admin/storeCategory",[CategoryController::class, 'storeCategory']);  
 
 Route::get("admin/getCategoriesList",[CategoryController::class, 'getCategoriesList']); 

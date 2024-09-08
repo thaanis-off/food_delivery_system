@@ -31,7 +31,7 @@ class FoodMenuController extends Controller
   ]);
   
 $imageName=time().".".$request->image->extension();
-$request->image->move(public_path('all_images'), $imageName);
+$request->image->move(public_path('food_menu_images'), $imageName);
 
 
 $food_menus = new FoodMenu;
@@ -80,7 +80,7 @@ public function updateMenu(Request $request ,$id){
    
    if (isset($request->image)) {
     $foodImageName=time().".".$request->image->extension();
-    $request->image->move(public_path('all_images'), $foodImageName);
+    $request->image->move(public_path('food_menu_images'), $foodImageName);
     $food_menus->image = $foodImageName;
    }
 
@@ -100,10 +100,12 @@ public function updateMenu(Request $request ,$id){
     return redirect('/all-menu')->withSuccess('Food updated successfull...');
   }
 
-  public function destroy($id){
+  public function destroyFoodMenu($id){
     $food_menus = foodMenu::where('id',$id)->first();
-    $food_menus->delete();
-    return back()->withSuccess('Resturant Deleted Successfull...');
+    $food_menus->delete();  
+    return back()->withSuccess('food Deleted Successfull...');
+    
+    
 } 
 
 

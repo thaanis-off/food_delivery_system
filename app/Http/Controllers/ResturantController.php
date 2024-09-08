@@ -39,7 +39,7 @@ class ResturantController extends Controller
     }
     
     public function editResturant($id){
-        $resturants = resturant::where('id',$id)->first();
+        $resturants = Resturant::where('id',$id)->first();
         return view('admin.edit_resturant',['resturants'=> $resturants]); 
     } 
     
@@ -58,18 +58,17 @@ class ResturantController extends Controller
 
            if (isset($request->image)) {
             $imageName=time().".".$request->image->extension();
-            $request->image->move(public_path('all_images'), $imageName);
+            $request->image->move(public_path('resturant_images'), $imageName);
             $resturants->image = $imageName;
            }
-
-           if (isset($request->rest_banner_image)) {
-            $RestimageName=time().".".$request->rest_banner_image->extension();
-            $request->rest_banner_image->move(public_path('all_images'), $RestimageName);
-            $resturants->rest_banner_image = $RestimageName;
+           
+            if (isset($request->resturant_banner_image)) {
+            $RestimageName=time().".".$request->resturant_banner_image->extension();
+            $request->resturant_banner_image->move(public_path('resturant_bnr_images'), $RestimageName);
+            $resturants->resturant_banner_image = $RestimageName;
            }
 
-          
-
+        
            $resturants->name = $request->name;
            $resturants->opening_time = $request->opening_time;
            $resturants->closing_time = $request->closing_time;
@@ -116,10 +115,10 @@ class ResturantController extends Controller
        ]);
        
     $imageName=time().".".$request->image->extension();
-    $request->image->move(public_path('all_images'), $imageName);
+    $request->image->move(public_path('resturant_images'), $imageName);
 
     $RestimageName=time().".".$request->resturant_banner_image->extension();
-    $request->resturant_banner_image->move(public_path('all_images'), $RestimageName);
+    $request->resturant_banner_image->move(public_path('resturant_bnr_images'), $RestimageName);
     
 
     $product = new resturant;

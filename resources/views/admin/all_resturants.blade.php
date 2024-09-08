@@ -32,8 +32,9 @@
 
                      <tr>
                          <td>{{ $index }}</td>
-                         <td><img class="mmm" src="all_images/{{ $rest->image }}" alt="Greek salad"></td>
-                         <td><img class="mmm" src="all_images/{{ $rest->resturant_banner_image }}" alt="Greek salad">
+                         <td><img class="mmm" src="resturant_images/{{ $rest->image }}" alt="Greek salad"></td>
+                         <td><img class="mmm" src="resturant_bnr_images/{{ $rest->resturant_banner_image }}"
+                                 alt="Greek salad">
                          </td>
                          <td>{{ $rest->name }}</td>
                          <td><span>{{ $rest->description }}</span></td>

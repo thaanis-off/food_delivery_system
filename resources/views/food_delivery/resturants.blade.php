@@ -16,7 +16,7 @@
             <a href="{{ route('resturantview', ['id' => $rest->id]) }}">
                 <div class="card rest shadow">
 
-                    <img src="all_images/{{ $rest->image }}" class="card-img-top rest-card-img" alt="Greek Salad"
+                    <img src="resturant_images/{{ $rest->image }}" class="card-img-top rest-card-img" alt="Greek Salad"
                         data-bs-toggle="modal" data-bs-target="#Modal2">
                     <div class="card-body rest-card-body">
                         <h5 class="card-title card-title-rest mt-3" data-bs-toggle="modal" data-bs-target="#Modal2">

@@ -30,7 +30,7 @@
                        @endphp
                        <tr>
                            <td>{{ $foods }}</td>
-                           <td><img class="admin-index-img" src="{{ asset('all_images/' . $food->image) }}"
+                           <td><img class="admin-index-img" src="{{ asset('food_menu_images/' . $food->image) }}"
                                    alt="{{ $food->name }}">
                            </td>
                            <td>{{ $food->name }}</td>
@@ -49,7 +49,8 @@
                            <td>
                                <a href="admin/{{ $food->id }}/edit_menu"> <button class="btn btn-dark btn-xl"><i
                                            class="bi bi-pencil-square"></i></button></a>
-                               <a href="" onClick= "return confirm ('Are you sure want to delete ?')"> <button
+                               <a href="admin/{{ $food->id }}/deleteFood"
+                                   onClick= "return confirm ('Are you sure want to delete ?')"> <button
                                        class="btn btn-danger btn-xl"><i class="fa fa-times"></i></button></a>
                            </td>
                        </tr>
