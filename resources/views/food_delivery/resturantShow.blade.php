@@ -51,6 +51,71 @@
             </div>
         </div>
     @endforeach
+
+    @foreach ($food_menus as $food)
+        <!-- first inedx food modal-->
+        <div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="btn-close cls-btn-index" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                        <!-- card page start -->
+                        <div class="col-md-12 mb-4">
+                            <div class="card cardShow">
+                                <img src="{{ asset('food_menu_images/' . $food->image) }}"
+                                    class="card-img-top show-card-img" alt="Greek Salad">
+                                <div class="card-body">
+                                    <h5 class="card-title card-title-show mt-3">{{ $food->name }}</h5>
+                                    <span class="card-rating">★★★★☆</span>
+                                    <small>
+                                        <a href="" style="color:black;">(0 customer reviews)</a>
+                                    </small>
+                                    <p class="card-text show-card-text text-secondary">{{ $food->description }}</p>
+                                    <span class="card-price show-card-price fw-semibold" style="margin-right: 9px;"><span
+                                            style="color: black;">Rs.</span>{{ $food->selling_price }}</span>
+                                    <span
+                                        class="card-price show-card-price text-decoration-line-through text-danger fw-semibold"><span
+                                            style="color: black;">Rs.</span>{{ $food->mrp }}</span>
+                                    <small>
+                                        @php
+
+                                            $prcnt = ($food->selling_price / $food->mrp) * 100;
+                                            echo round($prcnt, 2) . '%'; // 2.7% -- (30 / 1110) * 100 rounded to 2dp
+                                            //echo $prcnt;
+                                        @endphp
+
+
+
+
+
+                                    </small>
+                                    <p class="fw-semibold" style="margin-top: 8px;">Quantity</p>
+
+                                    <div class="d-flex">
+                                        <input class="form-control text-center me-3" id="inputQuantity" type="num"
+                                            value="1" style="max-width: 3rem" />
+                                        <button class="btn btn-outline-dark flex-shrink-0" type="button">Buy now</button>
+                                        <button class="btn btn-outline-dark flex-shrink-0" type="button"
+                                            style="margin-left: 10px;">
+                                            <i class="bi-cart-fill me-1"></i>
+                                            Add to card
+                                        </button>
+                                    </div>
+                                    <button class="btn btn-outline-dark flex-shrink-0" type="button"
+                                        style="margin-top: 10px;">
+                                        <i class="bi bi-heart-fill"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- card page end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
+    <!-- first index modal end -->
 @endsection
 
 {{-- @section('food_menu_scripts')
